@@ -1,22 +1,14 @@
 #!/usr/bin/python3
+import cgi, cgitb
+from http import cookies
 import os
-import cgi
+from db_handler import Database
+import logging
 import json
-import logging 
-import sqlalchemy
-from sqlalchemy import *
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
 
+cgitb.enable()
 
-logger = logging.getLogger()
-print("Content-Type: application/json;charset=utf-8")
-print()
-
-
-form = cgi.FieldStorage()
-username = form.getvalue('username')
-password = form.getvalue('password')
-
-response = {'username': username, 'password': password}
-print(json.JSONEncoder().encode(response))
+if __name__ == "__main__" :
+    print("Content-Type: application/json;charset=utf-8")
+    print()
+    print(json.JSONEncoder().encode('{"success": true}'))
